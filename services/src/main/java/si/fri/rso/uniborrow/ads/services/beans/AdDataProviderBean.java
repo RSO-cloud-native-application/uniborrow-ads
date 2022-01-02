@@ -35,7 +35,7 @@ public class AdDataProviderBean {
         long count = (Long) countQuery.getSingleResult();
         Random random = new Random();
         int number = random.nextInt((int) count);
-        return em.createQuery("SELECT ad from Ad ad WHERE ad.targetAudience = :value1", Ad.class)
+        return em.createQuery("SELECT ad from Ad ad WHERE ad.targetAudience = :value1 OR  ad.targetAudience = 'ALL'", Ad.class)
                 .setParameter("value1", targetAudience)
                 .setFirstResult(number)
                 .setMaxResults(1)

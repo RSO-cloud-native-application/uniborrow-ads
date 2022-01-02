@@ -34,7 +34,7 @@ public class AdDataResource {
         Ad ad = adDataProviderBean.getRandomTargetedAd(targetAudience);
         return Response.status(Response.Status.OK).entity(ad).build();
     }
-    
+
     @POST
     @Path("/")
     public Response createAdd(Ad ad) {
