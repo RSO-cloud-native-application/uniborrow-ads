@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uniborrow-ads-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: uniborrow-ads
+  template:
+    metadata:
+      labels:
+        app: uniborrow-ads
+    spec:
+      containers:
+        - image:
+            efodx/uniborrow-ads:2021-12-31-21-27-41
+          name: uniborrow-ads
+          env:
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://tyke.db.elephantsql.com/seuyflzt
+            - name: KUMULUZEE_DATASOURCES0_USERNAME
+              value: seuyflzt
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: uniborrow-ads-db-pass
+                  key: password
+            - name: KUMULUZEE_SERVER_BASEURL
+              value: http://uniborrow-ads:8080
+            - name: KUMULUZEE_CONFIG_ETCD_HOSTS
+              value: http://etcd:2379
+            - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
+              value: http://etcd:2379
+            - name: KUMULUZEE_DISCOVERY_CLUSTER
+              value: uniborrow-cluster
+          ports:
+            - containerPort: 8080
+              name: server
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: server
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: server
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 3
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: uniborrow-ads
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+  selector:
+    app: uniborrow-ads

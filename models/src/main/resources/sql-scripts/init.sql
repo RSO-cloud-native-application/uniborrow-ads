@@ -1,0 +1,3 @@
+INSERT INTO ads (target_audience, url, image_url) VALUES ('FIFTEEN_TO_18', 'https://www.fri.uni-lj.si/sl','https://www.fri.uni-lj.si/sites/all/themes/fri_theme/images/fri_logo.png');
+INSERT INTO ads (target_audience, url, image_url) VALUES ('FIFTEEN_TO_18', 'https://www.fmf.uni-lj.si/sl/','https://www.fmf.uni-lj.si/static/images/fmf-logo-home-sl.6b1422f931da.svg');
+INSERT INTO ads (target_audience, url, image_url) VALUES ('FORTY_UP', 'https://www.szlj.si/szl/clani-sportne-zveze/','https://www.szlj.si/wp-content/themes/szlj/assets/images/logo.png');
