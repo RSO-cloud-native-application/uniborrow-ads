@@ -9,9 +9,9 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/adsDS
-      connection-url: jdbc:postgresql://tyke.db.elephantsql.com/seuyflzt
-      username: seuyflzt
-      password: OAWQaKnSiGt6PbmcPZRl0Go2W7_G8Oy1
+      connection-url: jdbc:postgresql://tyke.db.elephantsql.com/aadbqpud
+      username: aadbqpud
+      password: Ou8T4ikcVC-NF7nVHL3oIwsF_pJFDQnw
       pool:
         max-size: 1
   config:
@@ -26,11 +26,6 @@ kumuluzee:
       web-instrumentation:
         - name: ads-endpoint
           url-pattern: /v1/ads/*
-  health:
-    checks:
-      data-source-health-check:
-        type: liveness
-        jndi-name: jdbc/adsDB
   logs:
     config-file: '<?xml version="1.0" encoding="UTF-8"?>
                             <Configuration name="comments">

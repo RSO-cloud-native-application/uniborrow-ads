@@ -14,13 +14,13 @@ spec:
     spec:
       containers:
         - image:
-            efodx/uniborrow-ads:2022-01-02-21-02-56
+            efodx/uniborrow-ads:2022-01-02-21-53-33
           name: uniborrow-ads
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://tyke.db.elephantsql.com/seuyflzt
+              value: jdbc:postgresql://tyke.db.elephantsql.com/aadbqpud
             - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: seuyflzt
+              value: aadbqpud
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
               valueFrom:
                 secretKeyRef:
