@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 @Log
 @ApplicationScoped
@@ -35,7 +36,14 @@ public class AdDataResource {
         return Response.status(Response.Status.OK).entity(ad).build();
     }
 
-    @PUT
+    @GET
+    @Path("/all")
+    public Response getAll() {
+        List<Ad> ad = adDataProviderBean.getAds();
+        return Response.status(Response.Status.OK).entity(ad).build();
+    }
+
+    @POST
     @Path("/")
     public Response createAdd(Ad ad) {
         if (ad.getImageUrl() != null && ad.getUrl() != null && ad.getTargetAudience() != null) {
