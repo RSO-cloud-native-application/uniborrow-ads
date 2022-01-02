@@ -25,7 +25,7 @@ public class AdDataProviderBean {
                 .setFirstResult(number)
                 .setMaxResults(1)
                 .getSingleResult();*/
-        return new Ad();
+        return em.createQuery("SELECT a FROM Ad a", Ad.class).getSingleResult();
     }
 
     @Counted
