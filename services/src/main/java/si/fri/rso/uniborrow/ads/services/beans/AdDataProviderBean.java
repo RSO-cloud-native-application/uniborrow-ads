@@ -7,7 +7,8 @@ import si.fri.rso.uniborrow.ads.models.entities.TargetAudience;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.util.List;
+import javax.persistence.Query;
+import java.util.Random;
 
 
 @RequestScoped
@@ -18,35 +19,19 @@ public class AdDataProviderBean {
 
     @Counted
     public Ad getRandomAd() {
-/*        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad");
+        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad");
         long count = (Long) countQuery.getSingleResult();
         Random random = new Random();
         int number = random.nextInt((int) count);
         return em.createQuery("SELECT ad from Ad ad", Ad.class)
                 .setFirstResult(number)
-                .setMaxResults(1)
-                .getSingleResult();*/
-        return em.createQuery("SELECT a FROM Ad a", Ad.class)
                 .setMaxResults(1)
                 .getSingleResult();
     }
 
     @Counted
-    public List<Ad> getAds() {
-/*        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad");
-        long count = (Long) countQuery.getSingleResult();
-        Random random = new Random();
-        int number = random.nextInt((int) count);
-        return em.createQuery("SELECT ad from Ad ad", Ad.class)
-                .setFirstResult(number)
-                .setMaxResults(1)
-                .getSingleResult();*/
-        return em.createQuery("SELECT a FROM Ad a", Ad.class).getResultList();
-    }
-
-    @Counted
     public Ad getRandomTargetedAd(TargetAudience targetAudience) {
-/*        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad WHERE ad.targetAudience = :value1").setParameter("value1", targetAudience);
+        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad WHERE ad.targetAudience = :value1").setParameter("value1", targetAudience);
         long count = (Long) countQuery.getSingleResult();
         Random random = new Random();
         int number = random.nextInt((int) count);
@@ -54,9 +39,7 @@ public class AdDataProviderBean {
                 .setParameter("value1", targetAudience)
                 .setFirstResult(number)
                 .setMaxResults(1)
-                .getSingleResult();*/
-        return new Ad();
-
+                .getSingleResult();
     }
 
     public Ad addAd(Ad ad) {
