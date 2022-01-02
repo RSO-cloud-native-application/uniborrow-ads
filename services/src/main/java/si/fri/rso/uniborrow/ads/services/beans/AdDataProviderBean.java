@@ -19,7 +19,7 @@ public class AdDataProviderBean {
 
     @Counted
     public Ad getRandomAd() {
-        Query countQuery = em.createNativeQuery("SELECT COUNT(*) from Ad");
+        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad");
         long count = (Long) countQuery.getSingleResult();
         Random random = new Random();
         int number = random.nextInt((int) count);
@@ -31,7 +31,7 @@ public class AdDataProviderBean {
 
     @Counted
     public Ad getRandomTargetedAd(TargetAudience targetAudience) {
-        Query countQuery = em.createNativeQuery("SELECT COUNT(*) from Ad WHERE ad.targetAudience = :value1").setParameter("value1", targetAudience);
+        Query countQuery = em.createQuery("SELECT COUNT(ad) from Ad ad WHERE ad.targetAudience = :value1").setParameter("value1", targetAudience);
         long count = (Long) countQuery.getSingleResult();
         Random random = new Random();
         int number = random.nextInt((int) count);
