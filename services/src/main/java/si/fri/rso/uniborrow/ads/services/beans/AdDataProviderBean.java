@@ -72,4 +72,23 @@ public class AdDataProviderBean {
         }
     }
 
+    public boolean deleteAd(Integer adId) {
+        Ad adEntity = em.find(Ad.class, adId);
+
+        if (adEntity != null) {
+            try {
+                beginTx();
+                em.remove(adEntity);
+                commitTx();
+            } catch (Exception e) {
+                rollbackTx();
+            }
+        } else {
+            return false;
+        }
+
+        return true;
+    }
+
+
 }

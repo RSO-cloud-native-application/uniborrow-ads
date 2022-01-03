@@ -47,4 +47,15 @@ public class AdDataResource {
         return Response.status(Response.Status.OK).entity(ad).build();
     }
 
+    @DELETE
+    @Path("{adId}")
+    public Response deleteLoan(@PathParam("adId") Integer adId) {
+        boolean deleted = adDataProviderBean.deleteAd(adId);
+        if (deleted) {
+            return Response.status(Response.Status.NO_CONTENT).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
 }
