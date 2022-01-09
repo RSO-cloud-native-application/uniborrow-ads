@@ -26,5 +26,16 @@ kumuluzee:
       web-instrumentation:
         - name: ads-endpoint
           url-pattern: /v1/ads/*
+  openapi-mp:
+    enabled: true
+    servlet:
+      mapping: /uniborrow-ads/openapi
+    ui:
+      enabled: true
+      mapping: /uniborrow-ads/openapi/ui
+      specification-server: http://35.223.79.242
+  dev:
+    scan-libraries:
+      - ads-models
 administration:
   maintenance-mode: false
