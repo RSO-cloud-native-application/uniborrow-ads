@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - image:
-            efodx/uniborrow-ads:2022-01-09-20-21-09
+            efodx/uniborrow-ads:2022-01-11-04-16-56
           name: uniborrow-ads
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
