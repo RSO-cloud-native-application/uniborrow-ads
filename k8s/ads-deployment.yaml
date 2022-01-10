@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - image:
-            efodx/uniborrow-ads:2022-01-03-23-40-52
+            efodx/uniborrow-ads:2022-01-09-20-21-09
           name: uniborrow-ads
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
@@ -34,6 +34,8 @@ spec:
               value: http://etcd:2379
             - name: KUMULUZEE_DISCOVERY_CLUSTER
               value: uniborrow-cluster
+            - name: KUMULUZEE_HEALTH_CHECKS_ETCDHEALTHCHECK_CONNETCIONURL
+              value: http://etcd:2379/health
           ports:
             - containerPort: 8080
               name: server
